@@ -1,0 +1,16 @@
+@use "../abstracts/" as *;
+
+@layer Componets.Sitemap {
+  .sitemap {
+    width: auto;
+    height: auto;
+    inset: rem(94) 0 0 100%;
+    transition: 0.5s allow-discrete;
+    &:popover-open {
+      inset: rem(94) 0 0 0;
+      @starting-style {
+        inset: rem(94) 0 0 100%;
+      }
+    }
+  }
+}

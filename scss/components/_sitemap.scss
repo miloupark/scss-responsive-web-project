@@ -12,5 +12,11 @@
         inset: rem(94) 0 0 100%;
       }
     }
+    &__nav {
+      overflow: auto;
+      height: rem(100);
+      background-color: $yellow;
+      @include scroll(5, 10, rgba($white, 0.5));
+    }
   }
 }

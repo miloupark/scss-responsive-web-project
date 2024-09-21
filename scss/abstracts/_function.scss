@@ -1,7 +1,6 @@
 @function rem($value, $base: 10) {
   $sum: calc($value / $base * 1rem);
   @return $sum;
-
   // @return $value + px;
   // 만약 px값으로 넘겨달라고하면 위 코드2줄을 주석처리하고, @return $value + px; 주석해제
 }

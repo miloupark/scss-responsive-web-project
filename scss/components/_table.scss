@@ -4,4 +4,254 @@
   caption {
     @include a11y-hidden;
   }
+  .talbe-type1 {
+    @include mobile {
+      margin-inline: rem($mobilePaddingX);
+      width: calc(100% - rem($mobilePaddingX * 2));
+    }
+    thead {
+      th {
+        padding-block: rem(20);
+        color: $gray33;
+        font-size: rem(14);
+        letter-spacing: rem(-0.28);
+        + th {
+          background: linear-gradient(to right, $graye1, $graye1) no-repeat left / rem(1) rem(16);
+        }
+      }
+      tr {
+        border: rem(1) solid $graye1;
+        border-bottom-color: $gray33;
+      }
+    }
+    tbody {
+      td {
+        padding: rem(26);
+        color: $gray66;
+        font-size: rem(16);
+        letter-spacing: rem(-0.32);
+        text-align: center;
+        border-bottom: rem(1) solid $grayf3;
+        &:has(a) {
+          text-align: left;
+        }
+        a {
+          @include mobile {
+            @include ellipsis;
+          }
+        }
+      }
+    }
+  }
+  .talbe-type2 {
+    @include mobile {
+      colgroup {
+        display: none;
+      }
+      &.mxmobile {
+        width: calc(100% - rem($mobilePaddingX * 2));
+      }
+    }
+    thead {
+      background-color: $gray66;
+      @include mobile {
+        display: none;
+      }
+      th {
+        color: $white;
+        font-size: rem(14);
+        padding-block: rem(20);
+        + th {
+          border-left: rem(1) solid $graye1;
+        }
+      }
+    }
+    tbody {
+      td {
+        padding: rem(20);
+        border-bottom: rem(1) solid $graye1;
+        color: $gray66;
+        font-size: rem(16);
+        letter-spacing: rem(-0.8);
+        text-align: center;
+        @include mobile {
+          display: grid;
+          grid-template-columns: rem(120) 1fr;
+          gap: rem(20);
+          text-align: left;
+          padding: 0;
+          font-size: rem(24);
+          align-items: center;
+          border: rem(1) solid $graye1;
+          + td {
+            margin-top: rem(-1);
+          }
+          &::before {
+            content: attr(data-text);
+            padding-block: rem(23);
+            text-align: center;
+            background-color: $gray66;
+            color: $white;
+            font-size: rem(22);
+            align-self: stretch;
+            align-content: center;
+          }
+          // &:nth-child(1) {
+          //   &::before {
+          //     content: "월";
+          //   }
+          // }
+          // &:nth-child(2) {
+          //   &::before {
+          //     content: "형태";
+          //   }
+          // }
+          // &:nth-child(3) {
+          //   &::before {
+          //     content: "운영방안";
+          //   }
+          // }
+          // &:nth-child(4) {
+          //   &::before {
+          //     content: "비고";
+          //   }
+          // }
+        }
+        + td {
+          border-left: rem(1) solid $graye1;
+        }
+      }
+      tr {
+        @include mobile {
+          display: block;
+          + tr {
+            margin-top: rem(20);
+          }
+        }
+      }
+    }
+  }
+  .table-type3 {
+    border-top: rem(1) solid $gray33;
+    @include mobile {
+      margin-inline: rem(30);
+      width: calc(100% - rem(60));
+      border: none;
+      colgroup {
+        display: none;
+      }
+    }
+    tr {
+      border-bottom: rem(1) solid $graye1;
+      @include mobile {
+        border: none;
+      }
+    }
+    :is(th, td) {
+      padding: rem(18) rem(20);
+      font-size: rem(16);
+      line-height: rem(14);
+      @include mobile {
+        display: block;
+        padding: 0;
+        font-size: rem(26);
+        line-height: 1.8;
+      }
+    }
+    th {
+      color: $black;
+      text-align: left;
+      font-weight: 500;
+      @include mobile {
+        color: $gray66;
+      }
+    }
+    td {
+      color: $gray99;
+      @include mobile {
+        padding-top: rem(10);
+      }
+    }
+  }
+  .table-type4 {
+    @include mobile {
+      margin-inline: rem(30);
+      width: calc(100% - rem($mobilePaddingX * 2));
+      border: none;
+      colgroup {
+        display: none;
+      }
+    }
+    tr {
+      border-bottom: rem(1) solid $graye1;
+      @include mobile {
+        display: block;
+        padding-block: rem(30);
+      }
+    }
+    :is(th, td) {
+      padding: rem(30);
+      font-size: rem(16);
+      line-height: rem(14);
+      @include mobile {
+        display: block;
+        padding: 0;
+        font-size: rem(26);
+        line-height: 1.8;
+      }
+    }
+    th {
+      color: $gray33;
+      text-align: left;
+      font-weight: 500;
+    }
+    td {
+      color: $gray99;
+      @include mobile {
+        padding-top: rem(10);
+      }
+    }
+  }
+  .scroll-table {
+    container: scrollTable / inline-size;
+    @include mobile {
+      position: relative;
+      overflow: hidden;
+      &.active {
+        overflow: auto;
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+      &::before {
+        @include position(a, left, 0, top, 0);
+        content: "";
+        background-color: rgba($black, 0.2);
+        width: 100%;
+        height: 100%;
+      }
+      &::after {
+        @include position(a, left, 50%, top, 50%);
+        content: "클릭 후 \a드래그하세요.";
+        white-space: pre;
+        text-align: center;
+        align-content: center;
+        width: clamp(rem(100), 30cqw, rem(150));
+        // clamp(최소값, 비례값, 최대값);
+        aspect-ratio: 1;
+        color: $white;
+        font-size: clamp(rem(15), 4cqi, rem(20));
+        border-radius: rem(1000);
+        background-color: rgba($black, 0.4);
+      }
+      > table {
+        width: rem(1000);
+      }
+    }
+  }
+
+  .text-primary {
+    color: $yellow;
+  }
 }

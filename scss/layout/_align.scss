@@ -56,5 +56,8 @@
     @include mobile {
       width: 100%;
     }
+    @include container(body, 1224px) {
+      width: 100%;
+    }
   }
 }

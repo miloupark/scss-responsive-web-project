@@ -15,6 +15,9 @@
       grid-template-columns: min-content 1fr min-content;
       align-items: center;
       gap: rem(114);
+      @include container(body, 1145px) {
+        gap: 0;
+      }
     }
     .utility {
       display: flex;
@@ -27,18 +30,20 @@
   }
 }
 @layer Popup.Header {
-  body {
-    &:has(#sitemap:popover-open) {
-      .header .btn-search {
-        display: none;
-      }
-      .header__inner {
-        &::before {
-          content: "";
-          width: rem(30);
+  @include mobile {
+    body {
+      &:has(#sitemap:popover-open) {
+        .header .btn-search {
+          display: none;
         }
+        .header__inner {
+          &::before {
+            content: "";
+            width: rem(30);
+          }
+        }
+        // icon-search가 min-content로 존재했던 걸 가상요소로 넣어줌으로써 흔들림 없애줌
       }
-      // icon-search가 min-content로 존재했던 걸 가상요소로 넣어줌으로써 흔들림 없애줌
     }
   }
 }

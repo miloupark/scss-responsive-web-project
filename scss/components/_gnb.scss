@@ -6,6 +6,9 @@
     @include mobile {
       display: none;
     }
+    @include container(body, 1145px) {
+      justify-self: center;
+    }
     > ul {
       display: flex;
       gap: rem(40);
@@ -18,7 +21,7 @@
           background: linear-gradient(to bottom, $yellow, $yellow) no-repeat bottom / 0% rem(10);
           transition: 0.5s;
         }
-        &:hover {
+        &:is(:has(:focus), :hover) {
           a {
             background-size: 100% rem(10);
           }
@@ -34,7 +37,7 @@
       }
     }
     .depth2 {
-      @include position(f, left, 0, top, anchor(--header bottom));
+      @include position(f, left, 0, top, anchor(--header bottom), 500);
       width: 100%;
       background-color: $white;
       translate: 0;

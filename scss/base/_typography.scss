@@ -5,11 +5,11 @@
 @layer Typography {
   html {
     font-size: 62.5%;
-    // @include mobile {
-    //   $baseSize: 62.5% / 2;
-    //   font-size: $baseSize;
-    //   // font-size: 31.25%;
-    // }
+    @include mobile {
+      $baseSize: 62.5% / 2;
+      font-size: $baseSize;
+      // font-size: 31.25%;
+    }
   }
 
   body {

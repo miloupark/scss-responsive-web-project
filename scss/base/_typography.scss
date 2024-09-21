@@ -6,7 +6,7 @@
   html {
     font-size: 62.5%;
     @include mobile {
-      $baseSize: 62.5% / 2;
+      $baseSize: calc(62.5% / 2);
       font-size: $baseSize;
       // font-size: 31.25%;
     }
